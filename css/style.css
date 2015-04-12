@@ -19,7 +19,7 @@
   height: 48px;
   text-align: center;
   padding: 43px 0 0 36px;
-  font-family: BlissPro;
+  font-family: BlissPro; /* Andrey: полагаю здесь должно быть font-family: 'BlissPro-Medium'; ?*/
   color: #000000;
   font-size: 24px;
   font-weight: 500;
