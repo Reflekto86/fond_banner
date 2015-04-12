@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'BlissPro-Medium';
+  src: url('../fonts/BlissPro-Medium.eot');
+  src: url('../fonts/BlissPro-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/BlissPro-Medium.woff') format('woff'),
+  url('../fonts/BlissPro-Medium.ttf') format('truetype'),
+  url('../fonts/BlissPro-Medium.svg#BlissPro-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#banner {
+  width: 1214px;
+  height: 266px;
+  background: url("../img/bg_banner.jpg")no-repeat;
+}
+.banner_text {
+  width: 558px;
+  height: 48px;
+  text-align: center;
+  padding: 43px 0 0 36px;
+  font-family: BlissPro;
+  color: #000000;
+  font-size: 24px;
+  font-weight: 500;
+}.counter {
+   width: 284px;
+   height: 107px;
+   margin: 12px 0 0 176px;
+   background: url("../img/bg_counter.jpg") no-repeat #eecb1c; /*TODO градиент или оставить картинку? */
+   border-radius: 2px;
+ }
