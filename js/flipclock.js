@@ -1759,7 +1759,7 @@ var FlipClock;
 		 * Timer interval (1 second by default)
 		 */		
 		 
-		interval: 1000,
+		interval: 1000, /*TODO: здесь задается частота в милисекундах смены числа младшего порядка (самого правого)*/
 
 		/**
 		 * The rate of the animation in milliseconds (not currently in use)
