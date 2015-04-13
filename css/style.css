@@ -1,10 +1,20 @@
 @font-face {
   font-family: 'BlissPro-Medium';
-  src: url('../fonts/BlissPro-Medium.eot');
-  src: url('../fonts/BlissPro-Medium.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/BlissPro-Medium.woff') format('woff'),
-  url('../fonts/BlissPro-Medium.ttf') format('truetype'),
-  url('../fonts/BlissPro-Medium.svg#BlissPro-Medium') format('svg');
+  src: url('../fonts/BlissPro-Medium/BlissPro-Medium.eot');
+  src: url('../fonts/BlissPro-Medium/BlissPro-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/BlissPro-Medium/BlissPro-Medium.woff') format('woff'),
+  url('../fonts/BlissPro-Medium/BlissPro-Medium.ttf') format('truetype'),
+  url('../fonts/BlissPro-Medium/BlissPro-Medium.svg#BlissPro-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BlissPro';
+  src: url('../fonts/BlissPro/BlissPro.eot');
+  src: url('../fonts/BlissPro/BlissPro.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/BlissPro/BlissPro.woff') format('woff'),
+  url('../fonts/BlissPro/BlissPro.ttf') format('truetype'),
+  url('../fonts/BlissPro/BlissPro.svg#BlissPro') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -19,14 +29,18 @@
   height: 48px;
   text-align: center;
   padding: 43px 0 0 36px;
-  font-family: BlissPro; /* Andrey: полагаю здесь должно быть font-family: 'BlissPro-Medium'; ?*/
+  font-family: BlissPro-Medium; /* Andrey: полагаю здесь должно быть font-family: 'BlissPro-Medium'; ? Vladislav: Да, действительно. Ночью больше ничего не выкладываю, не проверив по 3 раза*/
   color: #000000;
   font-size: 24px;
   font-weight: 500;
-}.counter {
+}
+
+.counter {
    width: 284px;
    height: 107px;
-   margin: 12px 0 0 176px;
-   background: url("../img/bg_counter.jpg") no-repeat #eecb1c; /*TODO градиент или оставить картинку? */
+   margin: 17px 0 0 176px;
+  font-family: BlissPro;
+  font-size: 65px;
+   background: url("../img/bg_counter2.png") no-repeat #eecb1c;
    border-radius: 2px;
- }
+}

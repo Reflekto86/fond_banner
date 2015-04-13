@@ -3,13 +3,38 @@
 <head lang="ru">
   <meta charset="UTF-8">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/flipclock.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/flipclock.js"></script>
   <title></title>
 </head>
 <body>
+<!-- TODO: Увеличить скорость анимации,
+           Сделать переменную, значение которой будет задаваться и при достижении останавливать счётчик
+           Подогнать размеры
+-->
 <div id="banner">
   <div class="banner_text">Количество специальных счетов, владельцем которых
   является региональный оператор</div>
-  <div class="counter"></div>
+
+  <div class="counter">
+    <div class="secondPlay">
+  <div class="clock" style="margin:2em;"></div>
+
+  <script type="text/javascript">
+    var clock;
+
+    $(document).ready(function() {
+
+      // Instantiate a counter
+      clock = new FlipClock($('.clock'), {
+        clockFace: 'Counter',
+        autoStart: true,
+        minimumDigits: 4
+      });
+    });
+  </script>
+  </div>
 </div>
 </body>
 </html>
