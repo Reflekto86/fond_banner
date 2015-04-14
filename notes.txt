@@ -2,6 +2,15 @@
 
 по идее нужно, чтобы этот блок исчез или хотябы остался на своем месте.
 
+Владислав: убрал строки
+        <div class="secondPlay">
+            <div class="clock" id="clock" data-limit="500"></div> <!-- Убрал style="margin:2em;" -->
+        </div>
+        Счётчик пропал, а задний фон там где и должен быть http://www.awesomescreenshot.com/image/81131/08c2d308703da4a48465ade0bcaee0d4
+
+Более-менее подогнал размеры и расположение всех блоков
+
+
 2. У шрифта убрал стиль font-weight: bold; и обертке таймера назначил шрифт BlissPro
 
 - файл flipclock.css классы .flip-clock-wrapper ul и .flip-clock-wrapper соотвественно
