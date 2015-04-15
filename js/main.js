@@ -21,7 +21,13 @@ $(document).ready(function() {
         var ClockInterval = setInterval(function() {
             clock.increment();
             var cnt = clock.getTime();
-            if(cnt>=limit) clearInterval(ClockInterval);
+            if(cnt>=limit) {
+                clock.stop();
+                clock = null;
+                $('body').removeClass('play');
+                clearInterval(ClockInterval);
+
+            }
         }, 20);
 
 });

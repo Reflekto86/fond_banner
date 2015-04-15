@@ -578,7 +578,7 @@ var FlipClock;
 	 				    object is passed, 0 will be used.	
 	 * @param 	object  An object of properties to override the default	
 	 */
-	setInterval(function () {
+	var flipClockInterval = setInterval(function () {
 		secondPlay()
 	}, 100);
 	function secondPlay() {
@@ -908,6 +908,7 @@ var FlipClock;
 		stop: function(callback) {
 			this.face.stop();
 			this.timer.stop(callback);
+            clearInterval(flipClockInterval);
 			
 			for(var x in this.lists) {
 				if (this.lists.hasOwnProperty(x)) {

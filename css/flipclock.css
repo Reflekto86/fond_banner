@@ -51,7 +51,6 @@
   text-align: center;
   position: relative;
   width: 100%;
-  margin: 1em;
 }
 
 .flip-clock-wrapper:before,
@@ -67,23 +66,23 @@
 .flip-clock-wrapper ul {
   position: relative;
   float: left;
-  margin: 5px;
+  margin: 5px 3px 5px 3px;
   width: 60px;
-  height: 90px;
+  height: 84px;
   font-size: 80px;
-  line-height: 87px;
-  border-radius: 6px;
+  line-height: 81px;
+  border-radius: 2px;
   /*background: #000;  TODO: разобраться с чёрным задним фоном*/
 }
 
 .flip-clock-wrapper ul li {
   z-index: 1;
   position: absolute;
-  left: -10px;
+  left: 0px; /* TODO: тут было -10px, зачем? */
   top: 0;
   width: 100%;
   height: 100%;
-  line-height: 87px;
+  line-height: 81px;
   text-decoration: none !important;
 }
 
@@ -122,12 +121,16 @@
   -ms-transform-origin: 50% 100%;
   -o-transform-origin: 50% 100%;
   transform-origin: 50% 100%;
-  top: 0; }
+  top: 0;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+  overflow: hidden;
+}
 
 .flip-clock-wrapper ul li a div.up:after {
   content: "";
   position: absolute;
-  top: 44px;
+  top: 41px;
   left: 0;
   z-index: 5;
   width: 100%;
@@ -142,8 +145,11 @@
   -o-transform-origin: 50% 0;
   transform-origin: 50% 0;
   bottom: 0;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  overflow: hidden;
+  /* TODO: добавляем тень под каждым таблоидом */
+  box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.14);
 }
 
 .flip-clock-wrapper ul li a div div.inn {
@@ -156,14 +162,23 @@
   text-shadow: 0 1px 2px #000;
   text-align: center;
   background-color: #ffffff;
-  border-radius: 6px;
-  font-size: 70px;  }
+  border-radius: 2px;
+  font-size: 65px; /* TODO: в макете шрифт в таблоиде равен 65px. Заменил*/
 
+}
+
+/* TODO: в блоке про градиенты, говорилось про данные плшки. Добавил сюда стили. */
 .flip-clock-wrapper ul li a div.up div.inn {
-  top: 0; }
+  top: 0;
+  /* непрозрачность в 4 процента как-то не смотрелось, поэтому увеличил до 6% */
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(0,0,0,0.06) 100%) #ffffff;
+}
 
 .flip-clock-wrapper ul li a div.down div.inn {
-  bottom: 0; }
+  bottom: 0;
+  /*Здесь тень (фоновый градиент) идет наоборот, в другую сторону*/
+  background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(0,0,0,0.06) 100%) #ffffff;
+}
 
 /* PLAY */
 .flip-clock-wrapper ul.play li.flip-clock-before {
@@ -349,27 +364,49 @@ background-image: -ms-linear-gradient( 90deg, rgb(1,1,1) 0%, rgb(255,255,255) 10
 Добавлял её в разные места, но толку не получил.
 Очень хочу посмотреть что же в итоге надо было сделать, т.к. я пока не понимаю вообще.
 
+
+Andrey:
+все, что нужно - провести градиент как в макете. Для этого:
+1. Смотрим какой у слоя стиль градиента: http://take.ms/yBIIE и http://take.ms/NLAbs -
+от белого к черному, сверху вниз, прозрачность 4%
+2. Итоговый стиль можно записать так:
+ background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(0,0,0,0.04) 100%);
+
+ То, что идет ниже в блоке SHADOW - это стиль для тега <div class='shadow'> - он отображается при анимации, когда
+ таблоид листается. Так я тоже несколько смягчил тень.
+
+3. Но в целом нам нужно применить стиль к блоку в обычном состоянии это <div class='inn'> - одна часть относится
+ к верхней плашке, одна - к нижней.
+
+
  */
+
 /* SHADOW */
 .flip-clock-wrapper ul.play li.flip-clock-before .up .shadow {
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.1)), color-stop(100%, rgba(0, 0, 0, 0.3)));
-  background: linear, top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%;
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-  background: linear, to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%;
-  -webkit-animation: show 0.5s linear both;
+
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(0,0,0,0.3) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(0,0,0,0.3))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0.3) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0.3) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0.3) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(0,0,0,0.3) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#4d000000',GradientType=0 ); /* IE6-9 */
+
+    -webkit-animation: show 0.5s linear both;
   -moz-animation: show 0.5s linear both;
   animation: show 0.5s linear both; }
 
-.flip-clock-wrapper ul.play li.flip-clock-active .up .shadow {
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.1)), color-stop(100%, rgba(0, 0, 0, 0.3)));
-  background: linear, top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%;
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-  background: linear, to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%;
-  -webkit-animation: hide 0.5s 0.3s linear both;
+.flip-clock-wrapper ul.play li.flip-clock-active .up .shadow { /* Для блока теней есть состояние, активное (когда) идет
+                                                                    анимация */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(0,0,0,0.3) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(0,0,0,0.3))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0.3) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0.3) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0.3) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(0,0,0,0.3) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#4d000000',GradientType=0 ); /* IE6-9 */
+
+    -webkit-animation: hide 0.5s 0.3s linear both;
   -moz-animation: hide 0.5s 0.3s linear both;
   animation: hide 0.5s 0.3s linear both; }
 

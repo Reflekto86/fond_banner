@@ -1,47 +1,54 @@
 @font-face {
-  font-family: 'BlissPro-Medium';
-  src: url('../fonts/BlissPro-Medium/BlissPro-Medium.eot');
-  src: url('../fonts/BlissPro-Medium/BlissPro-Medium.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/BlissPro-Medium/BlissPro-Medium.woff') format('woff'),
-  url('../fonts/BlissPro-Medium/BlissPro-Medium.ttf') format('truetype'),
-  url('../fonts/BlissPro-Medium/BlissPro-Medium.svg#BlissPro-Medium') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'BlissPro';
-  src: url('../fonts/BlissPro/BlissPro.eot');
-  src: url('../fonts/BlissPro/BlissPro.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/BlissPro/BlissPro.woff') format('woff'),
-  url('../fonts/BlissPro/BlissPro.ttf') format('truetype'),
-  url('../fonts/BlissPro/BlissPro.svg#BlissPro') format('svg');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'BlissPro-Medium';
+    src: url('../fonts/BlissPro-Medium/BlissPro-Medium.eot');
+    src: url('../fonts/BlissPro-Medium/BlissPro-Medium.eot?#iefix') format('embedded-opentype'), url('../fonts/BlissPro-Medium/BlissPro-Medium.woff') format('woff'), url('../fonts/BlissPro-Medium/BlissPro-Medium.ttf') format('truetype'), url('../fonts/BlissPro-Medium/BlissPro-Medium.svg#BlissPro-Medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: 'BlissPro';
+    src: url('../fonts/BlissPro/BlissPro.eot');
+    src: url('../fonts/BlissPro/BlissPro.eot?#iefix') format('embedded-opentype'), url('../fonts/BlissPro/BlissPro.woff') format('woff'), url('../fonts/BlissPro/BlissPro.ttf') format('truetype'), url('../fonts/BlissPro/BlissPro.svg#BlissPro') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 #banner {
-  width: 1214px;
-  height: 266px;
-  background: url("../img/bg_banner.jpg")no-repeat;
-}
-.banner_text {
-  width: 558px;
-  height: 48px;
-  text-align: center;
-  padding: 29px 0 0 36px;
-  font-family: BlissPro-Medium; /* Andrey: полагаю здесь должно быть font-family: 'BlissPro-Medium'; ? Vladislav: Да, действительно. Ночью больше ничего не выкладываю, не проверив по 3 раза*/
-  color: #000000;
-  font-size: 24px;
-  font-weight: 500;
+    width: 1214px;
+    height: 266px;
+    background: url("../img/bg_banner.jpg") no-repeat;
 }
 
+/* Здесь откалибровал положение ближе к макету, а так все хорошо */
+.banner_text {
+    width: 570px;
+    height: 48px;
+    text-align: center;
+    padding: 38px 0 0 34px;
+    font-family: BlissPro-Medium;
+    color: #000000;
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 500;
+}
+
+/* TODO: фоновый стиль блока лучше все же задать стилями CSS.
+Возможна ситуация, когда в будущем появится 5-й разряд числа в счетчике  или клиент наоборот захочет сократить до 3-х,
+тогда придется дизайнеру менять макет блока, а верстальщику заново его вырезать, поэтому задими все стилями. Это позволит
+не париться в будущем, да и плюс это оптимальнее с точки зрения оптимизации: нет дополнительного запроса браузера к файлу
+и вес страницы на пару килобайт уменьшили
+*/
 .counter {
-   width: 284px;
-   height: 107px;
-   margin: 22px 0 0 176px;
-  font-family: BlissPro;
-  font-size: 65px;
-   background: url("../img/bg_counter2.png") no-repeat #eecb1c;
-   border-radius: 2px;
+    margin: 16px 0 0 176px;
+    font-family: BlissPro;
+    font-size: 65px;
+    /*Andrey: */
+    position: absolute; /*Чтобы ширину не приходилось задавать*/
+    border-radius: 3px;
+    background-color: #efce1e;
+    padding: 6px 11px 8px 11px;
+    box-shadow: inset 0px 3px 3px 0px #d8b316;
+
+
 }
